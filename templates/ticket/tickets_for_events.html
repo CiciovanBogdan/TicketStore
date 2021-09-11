@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Tickets
+{% endblock %}
+{% block content %}
+    <section class="container">
+        <h1>Events</h1>
+        {% for fixture in all_fixtures %}
+            <div class="row">
+                <article class="card fl-left">
+                    <section class="date">
+                        <time datetime="23th feb">
+                            <span>Classic</span>
+                        </time>
+                    </section>
+                    <section class="card-cont">
+                        <small>{{ fixture.description }}</small>
+                        <h3>{{ fixture.title }}</h3>
+                        <div class="even-date">
+                            <i class="fa fa-calendar"></i>
+                            <time>
+                                <span>price: {{ fixture.price }} &#128</span>
+                                <span>Fantastic view</span>
+                                <span>Etihad stadium experience</span>
+                            </time>
+                        </div>
+                        <div class="even-info">
+                            <i class="fa fa-map-marker"></i>
+                            <p>
+                                Etihad Campus Manchester, Etihad Stadium
+                            </p>
+                        </div>
+                        <span>
+                            <img id="logo_pl" src="../../static/logo-premier-league.jpg" alt="logo premier league">
+                        </span>
+                        <button class="btn_bg_color_green" type="button" id="details_btn1"
+                                onclick="ticketDetailsButton1()">DETAILS
+                        </button>
+                        <button type="button" data-bs-toggle="modal"
+                                data-bs-target="#buyModal" id="modalTrigger">
+                            Buy now
+                        </button>
+                    </section>
+                </article>
+                {#            de aici urmatorul#}
+                <article class="card fl-left">
+                    <section class="date">
+                        <time datetime="23th feb">
+                            <span>VIP</span>
+                        </time>
+                    </section>
+                    <section class="card-cont">
+                        <small>{{ fixture.description }}</small>
+                        <h3>{{ fixture.title }}</h3>
+                        <div class="even-date">
+                            <i class="fa fa-calendar"></i>
+                            <time>
+                                <span>price: {{ fixture.price }} &#128</span>
+                                <span>Warm chair</span>
+                                <span>the official math ball(just 1)</span>
+                            </time>
+                        </div>
+                        <div class="even-info">
+                            <i class="fa fa-map-marker"></i>
+                            <p>
+                                Etihad Campus Manchester, Etihad Stadium
+                            </p>
+                        </div>
+                        <span>
+                            <img id="logo_pl" src="../../static/logo-premier-league.jpg" alt="logo premier league">
+                        </span>
+                        <button class="btn_bg_color_purple" type="button" id="details_btn2"
+                                onclick="ticketDetailsButton2()">DETAILS
+                        </button>
+                        {% if perms.user.view_fixture %}
+                            <button type="button" data-bs-toggle="modal"
+                                    data-bs-target="#buyModal" id="modalTrigger">
+                                Buy now
+                            </button>
+                        {% else %}
+                            <button type="button" data-bs-toggle="modal" style="background-color: red"
+                                    data-bs-target="#buyModal" id="modalTrigger" disabled>
+                                Only for VIP
+                            </button>
+                        {% endif %}
+                    </section>
+                </article>
+            </div>
+        {% endfor %}
+    </section>
+    {#    modal #}
+    <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buy ticket</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                         width="150">
+                    Do you really want to buy this ticket?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{% url 'checkout' %}" class="btn btn-primary">Go to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald');
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #dadde6;
+            font-family: Arial, serif;
+        }
+
+        .fl-left {
+            float: left
+        }
+
+        .container {
+            width: 90%;
+            margin: 100px auto
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+
+        .card {
+            display: table-row;
+            width: 49%;
+            background-color: #fff;
+            color: #989898;
+            margin-bottom: 10px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            border-radius: 4px;
+            position: relative
+        }
+
+        .card + .card {
+            margin-left: 2%
+        }
+
+        .date {
+            display: table-cell;
+            width: 25%;
+            position: relative;
+            text-align: center;
+            border-right: 2px dashed #dadde6
+        }
+
+        .date:before,
+        .date:after {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #DADDE6;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            z-index: 1;
+            border-radius: 50%
+        }
+
+        .date:after {
+            top: auto;
+            bottom: -15px
+        }
+
+        .date time {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        .date time span {
+            display: block
+        }
+
+        .date time span:first-child {
+            color: #2b2b2b;
+            font-weight: 600;
+            font-size: 250%
+        }
+
+        .date time span:last-child {
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: -10px
+        }
+
+        .card-cont {
+            display: table-cell;
+            width: 75%;
+            font-size: 85%;
+            padding: 10px 10px 30px 50px
+        }
+
+        .card-cont h3 {
+            color: #3C3C3C;
+            font-size: 130%
+        }
+
+
+        .card-cont > div {
+            display: table-row
+        }
+
+        .card-cont .even-date i,
+        .card-cont .even-info i,
+        .card-cont .even-date time,
+        .card-cont .even-info p {
+            display: table-cell
+        }
+
+        .card-cont .even-date i,
+        .card-cont .even-info i {
+            padding: 5% 5% 0 0
+        }
+
+        .card-cont .even-info p {
+            padding: 30px 50px 0 0
+        }
+
+        .card-cont .even-date time span {
+            display: block
+        }
+
+        #modalTrigger {
+            display: block;
+            text-decoration: none;
+            width: 80px;
+            height: 30px;
+            background-color: blue;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 2px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px
+        }
+
+
+        #details_btn1, #details_btn2 {
+            display: block;
+            text-decoration: none;
+            width: 80px;
+            height: 30px;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 2px;
+            position: absolute;
+            right: 10px;
+            bottom: 45px
+        }
+
+        .btn_bg_color_green {
+            background-color: green;
+        }
+
+        .btn_bg_color_purple {
+            background-color: purple;
+        }
+
+        #logo_pl {
+            max-height: 50px;
+            max-width: 50px;
+        }
+
+        {#Fi atent la astea doua#}
+        {#.row:last-child .card:first-child .card-cont a {#}
+        {#    background-color: #037FDD#}
+
+        {##}
+        {#.row:last-child .card:last-child .card-cont a {#}
+        {#    background-color: #F8504C#}
+
+
+        @media screen and (max-width: 860px) {
+            .card {
+                display: block;
+                float: none;
+                width: 100%;
+                margin-bottom: 10px
+            }
+
+            .card + .card {
+                margin-left: 0
+            }
+
+            .card-cont .even-date,
+            .card-cont .even-info {
+                font-size: 75%
+            }
+        }
+    </style>
+    <script src="../../static/details.js"></script>
+{% endblock %}

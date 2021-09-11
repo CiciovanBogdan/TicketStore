@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home_page' %}">MilesTickets</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home_page' %}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Tickets
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'ticket' %}">Man City</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ticket_real' %}">Real Madrid</a></li>
+                        <li><a class="dropdown-item" href="#">Coming soon...</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Hospitality
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'hospitality' %}">Man City</a></li>
+                        <li><a class="dropdown-item" href="{% url 'hospitality' %}">Real Madrid</a></li>
+                        <li><a class="dropdown-item" href="#">Coming soon...</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Merch
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'merch' %}">Man City</a></li>
+                        <li><a class="dropdown-item" href="{% url 'merch_real' %}">Real Madrid</a></li>
+                        <li><a class="dropdown-item" href="#">Coming soon...</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'contact_us' %}">Contact us</a>
+                </li>
+            </ul>
+            <div>
+                <a class="btn btn-sm btn-warning" href="{% url 'become_vip' %}" style="margin-right: 5px">Become VIP</a>
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                    <a class="btn btn-sm btn-secondary" href="{% url 'logout' %}">Logout {{ request.user.username }}</a>
+                {% else %}
+                    <a class="btn btn-sm btn-primary" href="{% url 'create_user' %}">Sign Up</a>
+                    <a class="btn btn-sm btn-success" href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

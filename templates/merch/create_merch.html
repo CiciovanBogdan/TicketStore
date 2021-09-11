@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    Create Merch
+{% endblock %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-sm btn-primary" type="submit">Create merch</button>
+        <a class="btn btn-sm btn-secondary" href="{% url 'merch_real' %}">Cancel</a>
+    </form>
+{% endblock %}

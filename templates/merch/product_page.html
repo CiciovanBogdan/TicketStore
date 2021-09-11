@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}
+    Buy Product
+{% endblock %}
+{% block content %}
+    <h1>Buy Product</h1>
+    <div class="card text-center">
+        <div style="width: 18rem;">
+            <img src="{{ all_merch.header_image.url }}" class="card-img-top" alt="...">
+        </div>
+        <h2>{{ all_merch.name }}</h2>
+        <p>Price: {{ all_merch.price }} &#8364</p>
+        <form>
+            <label for="size_select">Size</label>
+            <select id="size_select" required>
+                <option selected disabled>Choose size</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+            </select>
+        </form>
+        <button type="button" data-bs-toggle="modal" class="btn btn-primary"
+                data-bs-target="#buyModal" id="modalTrigger">
+            Buy now
+        </button>
+        <a class="btn btn-sm btn-secondary" href="{% url 'merch' %}">Cancel</a>
+    </div>
+    {# modal #}
+    <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buy ticket</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                         width="150">
+                    Do you want to buy this merch product?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{% url 'checkout' %}" class="btn btn-primary">Go to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #dadde6;
+            font-family: Arial, serif;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+        .card {
+            background-color: #dadde6;
+            margin-bottom: 40px;
+        }
+    </style>
+{% endblock %}

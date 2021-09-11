@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    Purchase success
+{% endblock %}
+{% block content %}
+    <div class="text-center">
+        <h1>Purchase made with success!</h1>
+        <h2>You will receive all info on email.</h2>
+        <h2>Have a good day!</h2>
+        <a class="btn btn-primary" href="{% url 'home_page' %}">Go to home page</a>
+    </div>
+{% endblock %}

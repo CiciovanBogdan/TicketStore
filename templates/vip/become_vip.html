@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}
+    Hospitality
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>BECOME VIP</h1>
+        <div class="card">
+            <div class="card-header">
+                Available for all
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">VIP MONTH</h5>
+                <p class="card-text">Price: 50 &#128</p>
+                <p class="card-text">Subscription type: monthly</p>
+                <button type="button" data-bs-toggle="modal" class="btn btn-primary"
+                        data-bs-target="#buyModal" id="modalTrigger">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Available for all
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">VIP YEAR</h5>
+                <p class="card-text">Price: 450 &#128</p>
+                <p class="card-text">Subscription type: yearly</p>
+                <button type="button" data-bs-toggle="modal" class="btn btn-primary"
+                        data-bs-target="#buyModal" id="modalTrigger">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </div>
+    {# modal #}
+    <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buy ticket</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                         width="150">
+                    Do you really want to become VIP?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{% url 'checkout' %}" class="btn btn-primary">Go to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #dadde6;
+            font-family: Arial, serif;
+        }
+
+        .container {
+            width: 90%;
+            margin: 100px auto
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+        .card {
+            margin-bottom: 40px;
+        }
+    </style>
+{% endblock %}
