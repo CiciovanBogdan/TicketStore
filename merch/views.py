@@ -5,6 +5,12 @@ from merch.forms import MerchForm, MerchRealForm
 from merch.models import Merch, MerchReal
 
 
+def get_common_data(request, context=None):
+    if context is None:
+        context = {}
+    return context
+
+
 class MerchListView(ListView):
     template_name = 'merch/merch.html'
     model = Merch
@@ -44,6 +50,11 @@ class MerchRealListView(ListView):
     template_name = 'merch/merch_real.html'
     model = MerchReal
     context_object_name = 'all_merch'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        context = get_common_data(self.request, context)
+        return context
 
 
 class MerchRealCreateView(CreateView):
