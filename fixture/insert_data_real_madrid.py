@@ -5,7 +5,7 @@ all_fixtures = xlrd.open_workbook('RealMadrid.xlsx')
 
 sheet = all_fixtures.sheet_by_name('Fixture')
 
-database = sqlite3.connect('../../djangoFinalProjectv2/db.sqlite3')
+database = sqlite3.connect('../db.sqlite3')
 
 cursor = database.cursor()
 

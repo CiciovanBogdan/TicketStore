@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from fixture.models import FixtureMancity, FixtureRealMadrid
+
+admin.site.register(FixtureMancity)
+admin.site.register(FixtureRealMadrid)

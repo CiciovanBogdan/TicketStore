@@ -3,10 +3,10 @@ import bs4
 import requests
 import xlsxwriter
 
-url = "https://www.madrid-football-tickets.com/REAL-MADRID-FOOTBALL-TICKETS"
+url = "https://www.madrid-football-tickets.com/REAL-MADRID-FOOTBALL-TICKETS#"
 
 result = requests.get(url)
-print(result)
+
 soup = bs4.BeautifulSoup(result.text, 'lxml')
 
 cases = soup.find_all('div', class_='container category_list-container')

@@ -51,5 +51,5 @@ def search_hospitality_view(request):
 def search_fixture_view(request):
     search = request.GET.get('search')
     fixture_found = FixtureMancity.objects.filter(title__contains=search)
-    return render(request, 'ticket/tickets_for_events.html',
+    return render(request, 'fixture/tickets_for_events.html',
                   {'all_fixture': fixture_found})  # aici este o problema mare
