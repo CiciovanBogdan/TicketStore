@@ -9,6 +9,8 @@ database = sqlite3.connect('../db.sqlite3')
 
 cursor = database.cursor()
 
+cursor.execute(f"DELETE FROM fixture_fixturemancity;")
+
 for row in range(0, sheet.nrows):
     title = sheet.cell(row, 0).value
     description = sheet.cell(row, 1).value

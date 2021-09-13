@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from fixture.models import FixtureMancity
-from hospitality.models import Hospitality
+from fixture.models import FixtureMancity, FixtureRealMadrid
+from hospitality.models import Hospitality, HospitalityReal
 from merch.models import Merch, MerchReal
 
 
@@ -43,13 +43,19 @@ def search_hospitality_view(request):
     return render(request, 'hospitality/hospitality.html', {'all_hospitality': hospitality_found})
 
 
-# def search_hospitality_real_view(request):
-#     search = request.GET.get('search')
-#     hospitality_found = HospitalityReal.objects.filter(name__contains=search)
-#     return render(request, 'hospitality/hospitality_real.html', {'all_hospitality': hospitality_found})
+def search_hospitality_real_view(request):
+    search = request.GET.get('search')
+    hospitality_found = HospitalityReal.objects.filter(name__contains=search)
+    return render(request, 'hospitality/hospitality_real.html', {'all_hospitality': hospitality_found})
 
-def search_fixture_view(request):
+
+def search_man_city_fixture(request):
     search = request.GET.get('search')
     fixture_found = FixtureMancity.objects.filter(title__contains=search)
-    return render(request, 'fixture/tickets_for_events.html',
-                  {'all_fixture': fixture_found})  # aici este o problema mare
+    return render(request, 'fixture/tickets_for_events.html', {'all_fixtures': fixture_found})
+
+
+def search_real_madrid_fixture(request):
+    search = request.GET.get('search')
+    fixture_found = FixtureRealMadrid.objects.filter(title__contains=search)
+    return render(request, 'fixture/ticket_for_real_madrid.html', {'all_fixtures': fixture_found})

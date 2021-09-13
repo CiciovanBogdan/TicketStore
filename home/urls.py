@@ -10,6 +10,7 @@ urlpatterns = [
     path('search/', views.search_page_view, name='search'),
     path('search-real/', views.search_madrid_view, name='search_madrid'),
     path('search-hospitality/', views.search_hospitality_view, name='search_hospitality'),
-    # path('search-hospitality-real/', views.search_hospitality_real_view, name='search_hospitality_real'),
-    path('search-tickets/', views.search_fixture_view, name='fixture_search'),
+    path('search-hospitality-real/', views.search_hospitality_real_view, name='search_hospitality_real'),
+    path('search-tickets-man-city/', views.search_man_city_fixture, name='search_fixture_man_city'),
+    path('search-tickets-real-madrid/', views.search_real_madrid_fixture, name="search_fixture_real_madrid"),
 ]
