@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ hospitality.name }}</h5>
                     <p class="card-text">Description: {{ hospitality.description }}</p>
-                    {% if perms.user.view_hospitalityreal %}
+                    {% if perms.user.vip_view_all %}
                         <a class="btn btn-sm btn-success" href="#">Reserve for next match</a>
                     {% else %}
                         <a class="btn btn-sm btn-danger" href="{% url 'become_vip' %}">Become VIP to reserve</a>

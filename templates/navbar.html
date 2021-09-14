@@ -83,14 +83,22 @@
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-            {% elif request.path == '/' %}
+            {% elif request.path == '/' or request.path == '/login/' or request.path == '/password_reset/' or request.path == '/create-user/' %}
             {% else %}
                 <span>Back before search: </span>
                 <button class="btn btn-danger" id="back_btn" style="margin-right: 300px">Back</button>
             {% endif %}
-            <div>
-                <a class="btn btn-sm btn-warning" href="{% url 'become_vip' %}" style="margin-right: 5px">Become VIP</a>
-            </div>
+            {% if perms.user.vip_view_all %}
+                <div>
+                    <a class="btn btn-sm btn-warning" href="{% url 'become_vip' %}" style="margin-right: 5px">Already
+                        VIP</a>
+                </div>
+            {% else %}
+                <div>
+                    <a class="btn btn-sm btn-warning" href="{% url 'become_vip' %}" style="margin-right: 5px">Become
+                        VIP</a>
+                </div>
+            {% endif %}
             <div>
                 {% if user.is_authenticated %}
                     <a class="btn btn-sm btn-secondary" href="{% url 'logout' %}">Logout {{ request.user.username }}</a>
