@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <h1>Hospitality</h1>
-        {% if perms.user.add_hospitalityreal %}
+        {% if perms.hospitality.add_hospitalityreal %}
             <a class="btn btn-sm btn-primary" href="{% url 'create_hospitality_real' %}">Create Hospitality</a>
         {% endif %}
         {% for hospitality in all_hospitality %}
@@ -16,16 +16,16 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ hospitality.name }}</h5>
                     <p class="card-text">Description: {{ hospitality.description }}</p>
-                    {% if perms.user.vip_view_all %}
+                    {% if perms.user.vip_only %}
                         <a class="btn btn-sm btn-success" href="#">Reserve for next match</a>
                     {% else %}
                         <a class="btn btn-sm btn-danger" href="{% url 'become_vip' %}">Become VIP to reserve</a>
                     {% endif %}
-                    {% if perms.user.change_hospitalityreal %}
+                    {% if perms.hospitality.change_hospitalityreal %}
                         <a class="btn btn-sm btn-primary"
                            href="{% url 'update_hospitality_real' hospitality.id %}">Update</a>
                     {% endif %}
-                    {% if perms.user.delete_hospitalityreal %}
+                    {% if perms.hospitality.delete_hospitalityreal %}
                         <a class="btn btn-sm btn-danger" href="{% url 'delete_hospitality_real' hospitality.id %}">Delete</a>
                     {% endif %}
                 </div>

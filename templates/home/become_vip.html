@@ -1,38 +1,29 @@
 {% extends 'base.html' %}
 {% block title %}
-    Hospitality
+    Become VIP
 {% endblock %}
 {% block content %}
     <div class="container">
-        <h1>BECOME VIP</h1>
-        <div class="card">
-            <div class="card-header">
-                Available for all
+        <h1>Become VIP</h1>
+        {% if perms.hospitality.add_hospitality %}
+            <a class="btn btn-sm btn-primary" href="{% url 'create_hospitality' %}">Create Hospitality</a>
+        {% endif %}
+        {% for vip in all_vip %}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ vip.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Price: {{ vip.price }}</p>
+                    <p class="card-text">Description: {{ vip.description }}</p>
+                    <p class="card-text">Type: {{ vip.vip_type }}</p>
+                    <button type="button" data-bs-toggle="modal" class="btn btn-primary"
+                            data-bs-target="#buyModal" id="modalTrigger">
+                        Become VIP
+                    </button>
+                </div>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">VIP MONTH</h5>
-                <p class="card-text">Price: 50 &#128</p>
-                <p class="card-text">Subscription type: monthly</p>
-                <button type="button" data-bs-toggle="modal" class="btn btn-primary"
-                        data-bs-target="#buyModal" id="modalTrigger">
-                    Subscribe
-                </button>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                Available for all
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">VIP YEAR</h5>
-                <p class="card-text">Price: 450 &#128</p>
-                <p class="card-text">Subscription type: yearly</p>
-                <button type="button" data-bs-toggle="modal" class="btn btn-primary"
-                        data-bs-target="#buyModal" id="modalTrigger">
-                    Subscribe
-                </button>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     {# modal #}
     <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -45,11 +36,11 @@
                 <div class="modal-body">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
                          width="150">
-                    Do you really want to become VIP?
+                    <span>Purchase this VIP subscription?</span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="{% url 'checkout' %}" class="btn btn-primary">Go to checkout</a>
+                    <a href="{% url 'checkout_vip' %}" class="btn btn-primary">Go to checkout</a>
                 </div>
             </div>
         </div>

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}
-    Update Hospitality
+    Update VIP Card
 {% endblock %}
 {% block content %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-sm btn-primary" type="submit">Save</button>
-        <a class="btn btn-sm btn-secondary" href="{% url 'hospitality' %}">Cancel</a>
+        <a class="btn btn-sm btn-secondary" href="{% url 'become_vip' %}">Cancel</a>
     </form>
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <h1>Hospitality</h1>
-        {% if perms.user.add_hospitality %}
+        {% if perms.hospitality.add_hospitality %}
             <a class="btn btn-sm btn-primary" href="{% url 'create_hospitality' %}">Create Hospitality</a>
         {% endif %}
         {% for hospitality in all_hospitality %}
@@ -21,11 +21,11 @@
                             data-bs-target="#buyModal" id="modalTrigger">
                         Buy now
                     </button>
-                    {% if perms.user.change_hospitality %}
+                    {% if perms.hospitality.change_hospitality %}
                         <a class="btn btn-sm btn-primary"
                            href="{% url 'update_hospitality' hospitality.id %}">Update</a>
                     {% endif %}
-                    {% if perms.user.delete_hospitality %}
+                    {% if perms.hospitality.delete_hospitality %}
                         <a class="btn btn-sm btn-danger" href="{% url 'delete_hospitality' hospitality.id %}">Delete</a>
                     {% endif %}
                 </div>

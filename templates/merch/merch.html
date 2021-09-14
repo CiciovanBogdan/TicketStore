@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <h1>Club Merch</h1>
-    {% if perms.user.add_merch %}
+    {% if perms.merch.add_merch %}
         <a class="btn btn-sm btn-primary" href="{% url 'create_merch' %}">Create Merch</a><br>
     {% endif %}
     {% for merch in all_merch %}
@@ -14,13 +14,15 @@
             <div class="card-body">
                 <h5 class="card-title">{{ merch.name }}</h5>
                 <p class="card-text">Price: {{ merch.price }} &#8364</p>
+                {# numar * procent / 100 #}
+                <p class="card-text">Reduced-price: ({{ merch.price }} * 20) / 100</p>
                 <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
                 <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy product</a>
-                {% if perms.user.change_merch %}
+                {% if perms.merch.change_merch %}
                     <a class="btn btn-sm btn-primary"
                        href="{% url 'update_merch' merch.id %}">Update</a>
                 {% endif %}
-                {% if perms.user.delete_merch %}
+                {% if perms.merch.delete_merch %}
                     <a class="btn btn-sm btn-danger" href="{% url 'delete_merch' merch.id %}">Delete</a>
                 {% endif %}
             </div>

@@ -73,7 +73,7 @@
                         <button class="btn_bg_color_purple" type="button" id="details_btn2"
                                 onclick="ticketDetailsButton2()">DETAILS
                         </button>
-                        {% if perms.user.vip_view_all %}
+                        {% if perms.user.vip_only %}
                             <button type="button" data-bs-toggle="modal"
                                     data-bs-target="#buyModal" id="modalTrigger">
                                 Buy now

@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth.models import Group
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from fixture.models import FixtureMancity, FixtureRealMadrid
+from home.forms import VIPForm
+from home.models import VIP
 from hospitality.models import Hospitality, HospitalityReal
 from merch.models import Merch, MerchReal
 
@@ -9,8 +14,44 @@ def home_page(request):
     return render(request, 'home/home_page.html')
 
 
-def become_vip(request):
-    return render(request, 'vip/become_vip.html')
+class BecomeVIPListView(ListView):
+    template_name = 'home/become_vip.html'
+    model = VIP
+    context_object_name = 'all_vip'
+
+
+class VIPCreateView(CreateView):
+    template_name = 'home/create_vip.html'
+    model = VIP
+    form_class = VIPForm
+    success_url = reverse_lazy('become_vip')
+    context_object_name = 'all_vip'
+
+
+class VIPUpdateView(UpdateView):
+    template_name = 'home/update_vip.html'
+    model = VIP
+    form_class = VIPForm
+    success_url = reverse_lazy('become_vip')
+    context_object_name = 'all_vip'
+
+
+class VIPDeleteView(DeleteView):
+    template_name = 'home/delete_vip.html'
+    model = VIP
+    success_url = reverse_lazy('become_vip')
+    context_object_name = 'all_vip'
+
+
+def add_to_member(request):
+    group = Group.objects.get(name='Member')
+    user = request.user.id
+    group.user_set.add(user)
+    return render(request, 'home/vip_activation_success.html')
+
+
+def checkout_vip(request):
+    return render(request, 'home/checkout_vip.html')
 
 
 def contact_us(request):
