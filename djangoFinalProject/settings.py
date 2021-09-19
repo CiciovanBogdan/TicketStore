@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'user',
     'permission',
     'merch',
+    'h_bookings',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [

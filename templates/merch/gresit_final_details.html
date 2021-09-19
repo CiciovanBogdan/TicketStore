@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+    Final details for the purchase
+{% endblock %}
+{% block content %}
+    <h1>Confirm purchase</h1>
+    <div class="card text-center">
+{#        <div style="width: 18rem;" class="text-center">#}
+{#            <img src="{{ all_merch.header_image.url }}" class="card-img-top" alt="...">#}
+{#        </div>#}
+{#        <h2>{{ all_merch.name }}</h2>#}
+{#        <p>Price: {{ all_merch.price }} &#8364</p>#}
+        <form class="form-control" action="{% url 'success_purchase' %}">
+            <label for="address">Address:</label>
+            <input id="address" type="text">
+            <label for="phone_number">Phone Number:</label>
+            <input id="phone_number" type="tel">
+            <label for="text_area">Other details:</label>
+            <textarea id="text_area"></textarea>
+            <button class="btn btn-primary" type="submit">Place order</button>
+            <a class="btn btn-sm btn-secondary" href="{% url 'merch' %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

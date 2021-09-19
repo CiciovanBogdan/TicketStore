@@ -9,6 +9,7 @@ sheet = hospitalitys.sheet_by_name('Sheet1')
 database = sqlite3.connect('../db.sqlite3')
 
 cursor = database.cursor()
+cursor.execute('DELETE FROM hospitality_hospitality')
 
 for row in range(0, sheet.nrows):
     name = sheet.cell(row, 0).value

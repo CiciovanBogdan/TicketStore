@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    Booking for hospitality
+{% endblock %}
+{% block content %}
+    <form method="post" action="{% url 'success_booking' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit" onclick="buttonClick()" id="available_btn">
+            Register booking
+        </button>
+    </form>
+{% endblock %}

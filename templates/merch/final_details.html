@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+    Final details for the purchase
+{% endblock %}
+{% block content %}
+    <h1>Confirm purchase</h1>
+    <div class="card text-center">
+        <form class="form-control" action="{% url 'success_purchase' %}">
+            <label for="address">Address:</label>
+            <input id="address" type="text" required><br>
+            <label for="phone_number">Phone Number:</label>
+            <input id="phone_number" type="tel" required><br>
+            <label for="text_area">Other details:</label>
+            <textarea id="text_area" required></textarea><br>
+            <button class="btn btn-primary" type="submit">Place order</button><br>
+            <a class="btn btn-sm btn-secondary" href="{% url 'merch' %}">Cancel</a>
+        </form>
+    </div>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #dadde6;
+            font-family: Arial, serif;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+        .card {
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+    </style>
+{% endblock %}

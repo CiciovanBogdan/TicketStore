@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
@@ -43,6 +44,22 @@ class MerchDetailView(DetailView):
     template_name = 'merch/product_page.html'
     model = Merch
     context_object_name = 'all_merch'
+
+
+class MerchFinalDetailView(DetailView):
+    template_name = 'merch/gresit_final_details.html'
+    model = Merch
+    context_object_name = 'all_merch'
+
+
+# loc pt final details
+def final_details(request):
+    return render(request, 'merch/final_details.html')
+
+
+# loc pt checkout merch
+def checkout_merch(request):
+    return render(request, 'merch/checkout_merch_city.html')
 
 
 # de aici la real

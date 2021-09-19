@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Buy Product</h1>
     <div class="card text-center">
-        <div style="width: 18rem;">
+        <div style="width: 18rem;" class="text-center">
             <img src="{{ all_merch.header_image.url }}" class="card-img-top" alt="...">
         </div>
         <h2>{{ all_merch.name }}</h2>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="{% url 'checkout' %}" class="btn btn-primary">Go to checkout</a>
+                    <a href="{% url 'checkout_merch' %}" class="btn btn-primary">Go to checkout</a>
                 </div>
             </div>
         </div>

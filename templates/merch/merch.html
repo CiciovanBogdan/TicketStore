@@ -13,11 +13,20 @@
             <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
             <div class="card-body">
                 <h5 class="card-title">{{ merch.name }}</h5>
-                <p class="card-text">Price: {{ merch.price }} &#8364</p>
-                {# numar * procent / 100 #}
-                <p class="card-text">Reduced-price: ({{ merch.price }} * 20) / 100</p>
+                {#                <p class="card-text">#}
+                {#                    Old price:<span style="text-decoration: line-through;">{{ merch.discount_price }}&#163</span>#}
+                {#                </p>#}
+                <p class="card-text">Price: {{ merch.price }} &#163</p>
                 <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
                 <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy product</a>
+                <form method="post" action="{% url 'add_to_cart' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ merch.id }}">
+                    <label>Nr of products:
+                        <input type="number" name="quantity" value="{{ quantity }}">
+                    </label>
+                    <button type="submit" class="btn btn-primary">Add to cart</button>
+                </form>
                 {% if perms.merch.change_merch %}
                     <a class="btn btn-sm btn-primary"
                        href="{% url 'update_merch' merch.id %}">Update</a>
