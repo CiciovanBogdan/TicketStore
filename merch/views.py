@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
-from merch.forms import MerchForm, MerchRealForm
-from merch.models import Merch, MerchReal, MerchManUnited, MerchBarcelona
+from merch.forms import MerchForm
+from merch.models import Merch
 
 
 def get_common_data(request, context=None):
@@ -58,7 +58,7 @@ class MerchDetailView(DetailView):
 
 
 class MerchFinalDetailView(DetailView):
-    template_name = 'merch/gresit_final_details.html'
+    template_name = 'merch/final_details.html'
     model = Merch
     context_object_name = 'all_merch'
 
@@ -70,13 +70,13 @@ def final_details(request):
 
 # loc pt checkout merch
 def checkout_merch(request):
-    return render(request, 'merch/checkout_merch_city.html')
+    return render(request, 'merch/checkout.html')
 
 
 # de aici la real
 class MerchRealListView(ListView):
     template_name = 'merch/merch_real.html'
-    model = MerchReal
+    model = Merch
     context_object_name = 'all_merch'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -85,43 +85,15 @@ class MerchRealListView(ListView):
         return context
 
 
-class MerchRealCreateView(CreateView):
-    template_name = 'merch/create_merch_real.html'
-    model = MerchReal
-    form_class = MerchRealForm
-    success_url = reverse_lazy('merch_real')
-
-
-class MerchRealUpdateView(UpdateView):
-    template_name = 'merch/update_merch_real.html'
-    model = MerchReal
-    form_class = MerchRealForm
-    success_url = reverse_lazy('merch_real')
-    context_object_name = 'all_merch'
-
-
-class MerchRealDeleteView(DeleteView):
-    template_name = 'merch/delete_merch_real.html'
-    model = MerchReal
-    success_url = reverse_lazy('merch_real')
-    context_object_name = 'all_merch'
-
-
-class MerchRealDetailView(DetailView):
-    template_name = 'merch/product_page_real.html'
-    model = MerchReal
-    context_object_name = 'all_merch'
-
-
 # de aici man united
 class MerchManUnitedListView(ListView):
     template_name = 'merch/merch_man_united.html'
-    model = MerchManUnited
+    model = Merch
     context_object_name = 'all_merch'
 
 
 # de aici barcelona
 class MerchBarcelonaListView(ListView):
     template_name = 'merch/merch_barcelona.html'
-    model = MerchBarcelona
+    model = Merch
     context_object_name = 'all_merch'

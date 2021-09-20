@@ -19,6 +19,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{% url 'ticket' %}">Man City</a></li>
                         <li><a class="dropdown-item" href="{% url 'ticket_real' %}">Real Madrid</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ticket_man_united' %}">Man United</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ticket_barcelona' %}">Barcelona</a></li>
                         <li><a class="dropdown-item" href="#">Coming soon...</a></li>
                     </ul>
                 </li>
@@ -51,13 +53,25 @@
                 </li>
             </ul>
             {% if request.path == '/merch/' %}
-                <form class="d-flex" action="{% url 'search' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_merch_city' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/merch-real/' %}
-                <form class="d-flex" action="{% url 'search_madrid' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_merch_real' %}" style="margin-right: 300px">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            {% elif request.path == '/merch-united/' %}
+                <form class="d-flex" action="{% url 'search_merch_united' %}" style="margin-right: 300px">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            {% elif request.path == '/merch-barcelona/' %}
+                <form class="d-flex" action="{% url 'search_merch_barcelona' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -75,13 +89,25 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/ticket-man-city/' %}
-                <form class="d-flex" action="{% url 'search_fixture_man_city' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_fixture_city' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/ticket-real-madrid/' %}
-                <form class="d-flex" action="{% url 'search_fixture_real_madrid' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_fixture_real' %}" style="margin-right: 300px">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            {% elif request.path == '/ticket-man-united/' %}
+                <form class="d-flex" action="{% url 'search_fixture_united' %}" style="margin-right: 300px">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            {% elif request.path == '/ticket-barcelona/' %}
+                <form class="d-flex" action="{% url 'search_fixture_barcelona' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>

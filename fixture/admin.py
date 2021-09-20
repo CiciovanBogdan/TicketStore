@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from fixture.models import FixtureMancity, FixtureRealMadrid
+from fixture.models import Fixture
 
-admin.site.register(FixtureMancity)
-admin.site.register(FixtureRealMadrid)
+admin.site.register(Fixture)

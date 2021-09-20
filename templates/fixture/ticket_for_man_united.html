@@ -15,26 +15,27 @@
                         </time>
                     </section>
                     <section class="card-cont">
-                        <small>{{ fixture.match_info_man_city }}</small>
-                        <h3>{{ fixture.title_man_city }}</h3>
+                        <small>{{ fixture.match_info_man_united }}</small>
+                        <h3>{{ fixture.title_man_united }}</h3>
                         <div class="even-date">
                             <i class="fa fa-calendar"></i>
                             <time>
                                 <span>price: {{ fixture.price }} &#128</span>
                                 <span>Fantastic view</span>
-                                <span>Etihad stadium experience</span>
+                                <span>Bernabéu stadium experience</span>
                             </time>
                         </div>
                         <div class="even-info">
                             <i class="fa fa-map-marker"></i>
                             <p>
-                                Etihad Campus Manchester, Etihad Stadium
+                                Old Trafford, Manchester, Anglia
                             </p>
                         </div>
                         <span>
                             <img id="logo_pl" src="../../static/logo-premier-league.jpg" alt="logo premier league">
                         </span>
                         <button class="btn_bg_color_green" type="button" id="details_btn1"
+                                style="background-color: green"
                                 onclick="ticketDetailsButton1()">DETAILS
                         </button>
                         <button type="button" data-bs-toggle="modal"
@@ -51,8 +52,8 @@
                         </time>
                     </section>
                     <section class="card-cont">
-                        <small>{{ fixture.match_info_man_city }}</small>
-                        <h3>{{ fixture.title_man_city }}</h3>
+                        <small>{{ fixture.match_info_man_united }}</small>
+                        <h3>{{ fixture.title_man_united }}</h3>
                         <div class="even-date">
                             <i class="fa fa-calendar"></i>
                             <time>
@@ -64,13 +65,14 @@
                         <div class="even-info">
                             <i class="fa fa-map-marker"></i>
                             <p>
-                                Etihad Campus Manchester, Etihad Stadium
+                                Old Trafford, Manchester, Anglia
                             </p>
                         </div>
                         <span>
                             <img id="logo_pl" src="../../static/logo-premier-league.jpg" alt="logo premier league">
                         </span>
                         <button class="btn_bg_color_purple" type="button" id="details_btn2"
+                                style="background-color: purple"
                                 onclick="ticketDetailsButton2()">DETAILS
                         </button>
                         {% if perms.user.vip_only %}
@@ -141,7 +143,6 @@
             margin-bottom: 30px
         }
 
-
         .card {
             display: table-row;
             width: 49%;
@@ -183,6 +184,14 @@
         .date:after {
             top: auto;
             bottom: -15px
+        }
+
+        .btn_bg_color_green {
+            background-color: green;
+        }
+
+        .btn_bg_color_purple {
+            background-color: purple;
         }
 
         .date time {
@@ -263,12 +272,12 @@
             bottom: 10px
         }
 
-
         #details_btn1, #details_btn2 {
             display: block;
             text-decoration: none;
             width: 80px;
             height: 30px;
+            background-color: #D8DDE0;
             color: #fff;
             text-align: center;
             line-height: 30px;
@@ -278,18 +287,11 @@
             bottom: 45px
         }
 
-        .btn_bg_color_green {
-            background-color: green;
-        }
-
-        .btn_bg_color_purple {
-            background-color: purple;
-        }
-
         #logo_pl {
             max-height: 50px;
             max-width: 50px;
         }
+
 
         @media screen and (max-width: 860px) {
             .card {

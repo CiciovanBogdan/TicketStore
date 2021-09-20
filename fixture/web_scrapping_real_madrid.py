@@ -39,7 +39,6 @@ col = 0
 for date in context['data']:
     worksheet.write(row, col, date['title'])
     worksheet.write(row, col + 1, date['description'])
-    worksheet.write(row, col + 2, f'{random.randint(35, 60)}')
     row += 1
 
 workbook.close()

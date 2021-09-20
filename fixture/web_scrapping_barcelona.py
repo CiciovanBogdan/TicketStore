@@ -3,24 +3,24 @@ import bs4
 import requests
 import xlsxwriter
 
-url = "https://www.eventuria.ro/oferte/pachete-cazare-si-bilete-fc-barcelona"
+url = "https://www.barcelona.com/barcelona_tickets/fc_barcelona_football_tickets"
 
 result = requests.get(url)
 print(result)
 soup = bs4.BeautifulSoup(result.text, 'lxml')
 
-cases = soup.find_all('div', class_='row qc-equal')
+cases = soup.find_all('div', class_='eventLine container clearfix')
 
 context = {'data': []}
 
 for case in cases:
     data = {}
-    title = case.find('p', class_='cs-offer-room-type-caption')
-    description = case.find('p', class_='cs-offer-meal-type-caption')
+    title = case.find('a', class_='')
+    description = case.find('div', class_='date')
     if not title:
         data['title'] = 'No data available'
     else:
-        data['title'] = title.text[0: title.text.index('-')]
+        data['title'] = title.text
     if not description:
         data['description'] = 'No data available'
     else:
@@ -34,7 +34,7 @@ for case in cases:
 # >> '123'
 
 workbook = xlsxwriter.Workbook('Barcelona.xlsx')
-worksheet = workbook.add_worksheet('Fixture-Barcelona')
+worksheet = workbook.add_worksheet('Fixture')
 
 row = 0
 col = 0
@@ -42,7 +42,7 @@ col = 0
 for date in context['data']:
     worksheet.write(row, col, date['title'])
     worksheet.write(row, col + 1, date['description'])
-    worksheet.write(row, col + 2, f'{random.randint(40, 65)}')
+    worksheet.write(row, col + 2, f'{random.randint(50, 90)}')
     row += 1
 
 workbook.close()

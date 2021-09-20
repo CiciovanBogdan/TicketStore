@@ -3,11 +3,11 @@ from django.contrib.auth.models import Group
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from fixture.models import FixtureMancity, FixtureRealMadrid
+from fixture.models import Fixture
 from home.forms import VIPForm
 from home.models import VIP
 from hospitality.models import Hospitality, HospitalityReal
-from merch.models import Merch, MerchReal
+from merch.models import Merch
 
 
 def home_page(request):
@@ -62,9 +62,9 @@ def thx_for_contact(request):
     return render(request, 'home/thx_for_cont_us.html')
 
 
-def search_page_view(request):
+def search_merch_city(request):
     search = request.GET.get('search')
-    merch_found = Merch.objects.filter(name__contains=search)
+    merch_found = Merch.objects.filter(name_city__contains=search)
     # another_product = Merch.objects.filter()
     # merch_found = list(merch_found)
     # another_product = list(another_product)
@@ -72,10 +72,22 @@ def search_page_view(request):
     return render(request, 'merch/merch.html', {'all_merch': merch_found})
 
 
-def search_madrid_view(request):
+def search_merch_real(request):
     search = request.GET.get('search')
-    merch_real = MerchReal.objects.filter(name__contains=search)
-    return render(request, 'merch/merch_real.html', {'all_merch': merch_real})
+    merch_found = Merch.objects.filter(name_real__contains=search)
+    return render(request, 'merch/merch_real.html', {'all_merch': merch_found})
+
+
+def search_merch_united(request):
+    search = request.GET.get('search')
+    merch_found = Merch.objects.filter(name_united__contains=search)
+    return render(request, 'merch/merch_real.html', {'all_merch': merch_found})
+
+
+def search_merch_barcelona(request):
+    search = request.GET.get('search')
+    merch_found = Merch.objects.filter(name_barcelona__contains=search)
+    return render(request, 'merch/merch_real.html', {'all_merch': merch_found})
 
 
 def search_hospitality_view(request):
@@ -90,13 +102,25 @@ def search_hospitality_real_view(request):
     return render(request, 'hospitality/hospitality_real.html', {'all_hospitality': hospitality_found})
 
 
-def search_man_city_fixture(request):
+def search_fixture_city(request):
     search = request.GET.get('search')
-    fixture_found = FixtureMancity.objects.filter(title__contains=search)
+    fixture_found = Fixture.objects.filter(title_man_city__contains=search)
     return render(request, 'fixture/tickets_for_events.html', {'all_fixtures': fixture_found})
 
 
-def search_real_madrid_fixture(request):
+def search_fixture_real(request):
     search = request.GET.get('search')
-    fixture_found = FixtureRealMadrid.objects.filter(title__contains=search)
+    fixture_found = Fixture.objects.filter(title_real_madrid__contains=search)
     return render(request, 'fixture/ticket_for_real_madrid.html', {'all_fixtures': fixture_found})
+
+
+def search_fixture_man_united(request):
+    search = request.GET.get('search')
+    fixture_found = Fixture.objects.filter(title_man_united__contains=search)
+    return render(request, 'fixture/ticket_for_man_united.html', {'all_fixtures': fixture_found})
+
+
+def search_fixture_barcelona(request):
+    search = request.GET.get('search')
+    fixture_found = Fixture.objects.filter(title_barcelona__contains=search)
+    return render(request, 'fixture/ticket_for_fc_barcelona.html', {'all_fixtures': fixture_found})
