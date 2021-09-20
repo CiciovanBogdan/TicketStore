@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Club Merch
+{% endblock %}
+{% block content %}
+    <h1>Club Merch</h1>
+{#    {% if perms.merch.add_merch %}#}
+{#        <a class="btn btn-sm btn-primary" href="{% url 'create_merch' %}">Create Merch</a><br>#}
+{#    {% endif %}#}
+    {% for merch in all_merch %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
+            <div class="card-body">
+                <h5 class="card-title">{{ merch.name }}</h5>
+                <p class="card-text">Price: {{ merch.price }} &#163</p>
+                <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
+                <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy product</a>
+{#                <form method="post" action="{% url 'add_to_cart' %}">#}
+{#                    {% csrf_token %}#}
+{#                    <input type="hidden" name="product_id" value="{{ merch.id }}">#}
+{#                    <label>Nr of products:#}
+{#                        <input type="number" name="quantity" value="{{ quantity }}">#}
+{#                    </label>#}
+{#                    <button type="submit" class="btn btn-primary">Add to cart</button>#}
+{#                </form>#}
+{#                {% if perms.merch.change_merch %}#}
+                {#                    <a class="btn btn-sm btn-primary"#}
+                {#                       href="{% url 'update_merch' merch.id %}">Update</a>#}
+                {#                {% endif %}#}
+                {#                {% if perms.merch.delete_merch %}#}
+                {#                    <a class="btn btn-sm btn-danger" href="{% url 'delete_merch' merch.id %}">Delete</a>#}
+                {#                {% endif %}#}
+            </div>
+        </div>
+    {% endfor %}
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #dadde6;
+            font-family: Arial, serif;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+        .card {
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+    </style>
+{% endblock %}

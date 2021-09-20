@@ -1,9 +1,11 @@
+# from functools import reduce
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from merch.forms import MerchForm, MerchRealForm
-from merch.models import Merch, MerchReal
+from merch.models import Merch, MerchReal, MerchManUnited, MerchBarcelona
 
 
 def get_common_data(request, context=None):
@@ -16,6 +18,15 @@ class MerchListView(ListView):
     template_name = 'merch/merch.html'
     model = Merch
     context_object_name = 'all_merch'
+
+    # django import-export
+
+    # calculele se fac in views(se poate si in template)
+    # def ceva(self):
+    #     recepi_with_all_values = list(map(lambda recepi_ing: {'recep_ing': recepi_ing,
+    #                                                           'calories': recepi_ing.quantity * recepi_ing.ingredient.calories / 100},
+    #                                       recepi_ingredients))  # al doilea in care itereaza
+    #     total_calories = reduce(lambda first, second: first + second['calories'], recepi_with_all_values, 0)
 
 
 class MerchCreateView(CreateView):
@@ -99,4 +110,18 @@ class MerchRealDeleteView(DeleteView):
 class MerchRealDetailView(DetailView):
     template_name = 'merch/product_page_real.html'
     model = MerchReal
+    context_object_name = 'all_merch'
+
+
+# de aici man united
+class MerchManUnitedListView(ListView):
+    template_name = 'merch/merch_man_united.html'
+    model = MerchManUnited
+    context_object_name = 'all_merch'
+
+
+# de aici barcelona
+class MerchBarcelonaListView(ListView):
+    template_name = 'merch/merch_barcelona.html'
+    model = MerchBarcelona
     context_object_name = 'all_merch'
