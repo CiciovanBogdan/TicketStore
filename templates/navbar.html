@@ -32,6 +32,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{% url 'hospitality' %}">Man City</a></li>
                         <li><a class="dropdown-item" href="{% url 'hospitality_real' %}">Real Madrid</a></li>
+                        <li><a class="dropdown-item" href="{% url 'hospitality_real' %}">Man United</a></li>
+                        <li><a class="dropdown-item" href="{% url 'hospitality_real' %}">Barcelona</a></li>
                         <li><a class="dropdown-item" href="#">Coming soon...</a></li>
                     </ul>
                 </li>
@@ -121,7 +123,7 @@
             {% if user.is_authenticated %}
                 {% if perms.user.vip_only %}
                     <div>
-                        <a class="btn btn-sm btn-warning" disabled style="margin-right: 5px">Already
+                        <a class="btn btn-sm btn-warning" href="{% url 'become_vip' %}"  style="margin-right: 5px">Already
                             VIP</a>
                     </div>
                 {% else %}

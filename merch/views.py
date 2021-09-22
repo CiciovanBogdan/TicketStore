@@ -19,15 +19,6 @@ class MerchListView(ListView):
     model = Merch
     context_object_name = 'all_merch'
 
-    # django import-export
-
-    # calculele se fac in views(se poate si in template)
-    # def ceva(self):
-    #     recepi_with_all_values = list(map(lambda recepi_ing: {'recep_ing': recepi_ing,
-    #                                                           'calories': recepi_ing.quantity * recepi_ing.ingredient.calories / 100},
-    #                                       recepi_ingredients))  # al doilea in care itereaza
-    #     total_calories = reduce(lambda first, second: first + second['calories'], recepi_with_all_values, 0)
-
 
 class MerchCreateView(CreateView):
     template_name = 'merch/create_merch.html'

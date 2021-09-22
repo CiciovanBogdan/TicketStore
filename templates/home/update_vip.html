@@ -7,6 +7,6 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-sm btn-primary" type="submit">Save</button>
-        <a class="btn btn-sm btn-secondary" href="{% url 'become_vip' %}">Cancel</a>
+         <a class="btn btn-sm btn-secondary" href="{{ request.META.HTTP_REFERER|escape }}">Cancel</a>
     </form>
 {% endblock %}

@@ -3,7 +3,38 @@
 
 {% endblock %}
 {% block content %}
-    {% for cart_item in cart_items %}
-        <p>{{ cart_item }}</p>
-    {% endfor %}
+    <table>
+        <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            {#            <th>Actions</th>#}
+        </tr>
+        </thead>
+        <tbody>
+        {% for cart_item in cart_items %}
+            <tr>
+                <td>{{ cart_item.quantity }}</td>
+                <td>
+                    <img src="{{ cart_item.product.header_image.url }}" alt="cart_item_photo"
+                         style="max-width: 60px;max-height: 60px">
+                    {{ cart_item.product.name }}
+                </td>
+                <td>{{ cart_item.product.price }}</td>
+                <td>{{ cart_item.product.price }}</td>
+                {#                <td>#}
+                {#                    <button class="btn btn-sm btn-danger">Remove</button>#}
+                {#                </td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        {% for cart_item in cart_items %}
+            <span>Cart value: {{ cart_item.product.price }}</span>
+        {% endfor %}
+    </div>
 {% endblock %}

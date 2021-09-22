@@ -10,30 +10,95 @@
     {% endif %}
     {% for merch in all_merch %}
         {% if merch.for_barcelona %}
-            <div class="card" style="width: 18rem;">
-                <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
-                <div class="card-body">
-                    <h5 class="card-title">{{ merch.name }}</h5>
-                    <p class="card-text">Price: {{ merch.price }} &#163</p>
-                    <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
-                    <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy product</a>
-                    <form method="post" action="{% url 'add_to_cart' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ merch.id }}">
-                        <label>Nr of products:
-                            <input type="number" name="quantity" value="{{ quantity }}">
-                        </label>
-                        <button type="submit" class="btn btn-primary">Add to cart</button>
-                    </form>
-                    {% if perms.merch.change_merch %}
-                        <a class="btn btn-sm btn-primary"
-                           href="{% url 'update_merch' merch.id %}">Update</a>
-                    {% endif %}
-                    {% if perms.merch.delete_merch %}
-                        <a class="btn btn-sm btn-danger" href="{% url 'delete_merch' merch.id %}">Delete</a>
-                    {% endif %}
+            {% if not merch.for_vip %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ merch.name }}</h5>
+                        {% if merch.discount_price > 1 %}
+                            <div>
+                                <small class="card-text" style="text-decoration:line-through">Old
+                                    price: {{ merch.price }}
+                                    &#163 </small>
+                                <p class="card-text">Price: {{ merch.discount_price }} &#163</p>
+                            </div>
+                        {% else %}
+                            <div>
+                                <p class="card-text" style="margin-bottom:18px;margin-top: 14px">
+                                    Price: {{ merch.price }} &#163</p>
+                            </div>
+                        {% endif %}
+                        <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
+                        <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy product</a>
+                        {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'add_to_cart' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ merch.id }}">
+                                <label>Nr of products:
+                                    <input type="number" name="quantity" value="{{ quantity }}">
+                                </label>
+                                <button type="submit" class="btn btn-primary">Add to cart</button>
+                            </form>
+                        {% endif %}
+                        {% if perms.merch.change_merch %}
+                            <a class="btn btn-sm btn-primary"
+                               href="{% url 'update_merch' merch.id %}">Update</a>
+                        {% endif %}
+                        {% if perms.merch.delete_merch %}
+                            <a class="btn btn-sm btn-danger" href="{% url 'delete_merch' merch.id %}">Delete</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    <h1>Club Merch VIP</h1>
+    {% for merch in all_merch %}
+        {% if merch.for_barcelona %}
+            {% if  merch.for_vip %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ merch.name }}</h5>
+                        {% if merch.discount_price > 1 %}
+                            <div>
+                                <small class="card-text" style="text-decoration:line-through">Old
+                                    price: {{ merch.price }}
+                                    &#163 </small>
+                                <p class="card-text">Price: {{ merch.discount_price }} &#163</p>
+                            </div>
+                        {% else %}
+                            <div>
+                                <p class="card-text" style="margin-bottom:18px;margin-top: 14px">
+                                    Price: {{ merch.price }} &#163</p>
+                            </div>
+                        {% endif %}
+                        <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
+                        {% if perms.user.vip_only %}
+                            <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy product</a>
+                        {% else %}
+                            <button class="btn btn-sm btn-danger" disabled>Only for VIP</button>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'add_to_cart' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ merch.id }}">
+                                <label>Nr of products:
+                                    <input type="number" name="quantity" value="{{ quantity }}">
+                                </label>
+                                <button type="submit" class="btn btn-primary">Add to cart</button>
+                            </form>
+                        {% endif %}
+                        {% if perms.merch.change_merch %}
+                            <a class="btn btn-sm btn-primary"
+                               href="{% url 'update_merch' merch.id %}">Update</a>
+                        {% endif %}
+                        {% if perms.merch.delete_merch %}
+                            <a class="btn btn-sm btn-danger" href="{% url 'delete_merch' merch.id %}">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
         {% endif %}
     {% endfor %}
     <style>

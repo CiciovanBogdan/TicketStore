@@ -7,6 +7,7 @@ urlpatterns = [
     path('become-vip/', views.BecomeVIPListView.as_view(), name='become_vip'),
     path('checkout-vip/', views.checkout_vip, name='checkout_vip'),
     path('success-vip/', views.add_to_member, name='success_vip'),
+    path('cancel-vip/', views.remove_from_member, name='cancel_vip_sub'),
     path('create-vip-card/', views.VIPCreateView.as_view(), name='create_vip_card'),
     path('delete-vip-card/<int:pk>/', views.VIPDeleteView.as_view(), name='delete_vip_card'),
     path('update-vip-card/<int:pk>/', views.VIPUpdateView.as_view(), name='update_vip_card'),

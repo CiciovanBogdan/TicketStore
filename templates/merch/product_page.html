@@ -25,7 +25,7 @@
                 data-bs-target="#buyModal" id="modalTrigger">
             Buy now
         </button>
-        <a class="btn btn-sm btn-secondary" href="{% url 'merch' %}">Cancel</a>
+        <a class="btn btn-sm btn-secondary" href="{{ request.META.HTTP_REFERER|escape }}">Cancel</a>
     </div>
     {# modal #}
     <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

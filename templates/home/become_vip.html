@@ -5,8 +5,8 @@
 {% block content %}
     <div class="container">
         <h1>Become VIP</h1>
-        {% if perms.hospitality.add_hospitality %}
-            <a class="btn btn-sm btn-primary" href="{% url 'create_hospitality' %}">Create Hospitality</a>
+        {% if perms.user.add_vip %}
+            <a class="btn btn-sm btn-primary" href="{% url 'create_vip_card' %}">Create VIP Card</a>
         {% endif %}
         {% for vip in all_vip %}
             <div class="card">
@@ -17,15 +17,28 @@
                     <p class="card-text">Price: {{ vip.price }}</p>
                     <p class="card-text">Description: {{ vip.description }}</p>
                     <p class="card-text">Type: {{ vip.vip_type }}</p>
-                    <button type="button" data-bs-toggle="modal" class="btn btn-primary"
-                            data-bs-target="#buyModal" id="modalTrigger">
-                        Become VIP
-                    </button>
+                    {% if perms.user.vip_only %}
+                        <button type="button" data-bs-toggle="modal" class="btn btn-danger"
+                                data-bs-target="#cancelModal" id="modalTrigger">
+                            Cancel VIP subscription
+                        </button>
+                    {% else %}
+                        <button type="button" data-bs-toggle="modal" class="btn btn-primary"
+                                data-bs-target="#buyModal" id="modalTrigger">
+                            Become VIP
+                        </button>
+                    {% endif %}
+                    {% if perms.user.update_vip %}
+                        <a class="btn btn-sm btn-primary" href="{% url 'update_vip_card' vip.id %}">Update</a>
+                    {% endif %}
+                    {% if perms.user.delete_vip %}
+                        <a class="btn btn-sm btn-danger" href="{% url 'delete_vip_card' vip.id %}">Delete</a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
     </div>
-    {# modal #}
+    {# modal for buy #}
     <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -41,6 +54,26 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <a href="{% url 'checkout_vip' %}" class="btn btn-primary">Go to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# modal for cancel #}
+    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buy ticket</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                         width="150">
+                    <span>Cancel VIP subscription?</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <a href="{% url 'cancel_vip_sub' %}" class="btn btn-primary">Yes</a>
                 </div>
             </div>
         </div>

@@ -1,100 +1,46 @@
-{% extends 'base.html' %}
-{% block title %}
-    Home Page
-{% endblock %}
-{% block content %}
-    <div class="tot">
-        <div class="test-image">
-            <header>
-                <h1 class="title">
-                    Welcome to MilesTickets
-                </h1>
-                <h2 class="sub-title">-Best site to buy tickets for your favourite football matches-</h2>
-            </header>
-            <hr>
-            <main>
-                <div class="content">
-                    <p>On this site you can buy tickets for upcoming matches and hospitality available at the football
-                        team
-                        stadium.</p>
-                    <p>If you want to enjoy all the experience check out the membership section where you can get some
-                        amazing stuff and the chance to buy tickets early than others.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                        1960s
-                        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                        desktop
-                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                        1960s
-                        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                        desktop
-                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                        1960s
-                        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                        desktop
-                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-            </main>
-            <hr>
-            <footer class="footer">
-                &#169 Ciciovan Bogdan Ionut<br>
-                Email: bogdigamer55@gmail.com<br>
-                Phone: 0752866191<br>
-                Address: Loc.Baita Mun. Gherla Jud.Cluj<br>
-            </footer>
-        </div>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                border: 0;
-                box-sizing: border-box
-            }
-
-            body {
-                background-color: #dadde6;
-            }
-
-            .test-image {
-                background-image: url("../../static/football-stock-img.jpg");
-                max-width: 94%;
-            }
-
-            .title, .sub-title {
-                text-align: center;
-                color: forestgreen;
-            }
-
-            .footer {
-                max-width: 300px;
-                background-color: white;
-                color: blue;
-                margin-left: 50px;
-            }
-
-            .content p {
-                background-color: white;
-                opacity: 0.5;
-            }
-        </style>
+<!DOCTYPE html>
+<html lang="en">
+<title>Home Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<body>
+{% include 'navbar.html' %}
+<div class="bgimg w3-display-container w3-text-white">
+    <div class="w3-display-middle w3-jumbo">
+        <p>Miles Tickets</p>
     </div>
-{% endblock %}
+    <div class="w3-display-topleft w3-container w3-xlarge">
+
+    </div>
+    <div class="w3-display-bottomleft w3-container">
+        <p class="w3-large">&#169 Ciciovan Bogdan Ionut</p>
+        <p class="w3-large">Email: bogdigamer55@gmail.com</p>
+        <p class="w3-large">Phone: 0752866191</p>
+        <p class="w3-large">Address: Loc.Baita Mun. Gherla Jud.Cluj</p>
+        <p></p>
+    </div>
+</div>
+<style>
+    body, h1, h5 {
+        font-family: "Raleway", sans-serif
+    }
+
+    body, html {
+        height: 100%
+    }
+
+    .bgimg {
+        background-image: url('../../static/football-stock-img.jpg');
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+

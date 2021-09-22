@@ -50,6 +50,13 @@ def add_to_member(request):
     return render(request, 'home/vip_activation_success.html')
 
 
+def remove_from_member(request):
+    group = Group.objects.get(name='Member')
+    user = request.user.id
+    group.user_set.remove(user)
+    return render(request, 'home/cancel_vip_sub.html')
+
+
 def checkout_vip(request):
     return render(request, 'home/checkout_vip.html')
 
