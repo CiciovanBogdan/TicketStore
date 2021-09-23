@@ -1,5 +1,6 @@
 from django.contrib import admin
 
-from hospitality.models import Hospitality
+from hospitality.models import HospitalityPayed, HospitalityVIP
 
-admin.site.register(Hospitality)
+admin.site.register(HospitalityPayed)
+admin.site.register(HospitalityVIP)

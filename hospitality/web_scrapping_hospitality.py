@@ -32,7 +32,7 @@ for case in cases:
 
     context['data'].append(data)
 
-workbook = xlsxwriter.Workbook('Hospitality.xlsx')
+workbook = xlsxwriter.Workbook('HospitalityCity.xlsx')
 worksheet = workbook.add_worksheet('Sheet1')
 
 row = 0

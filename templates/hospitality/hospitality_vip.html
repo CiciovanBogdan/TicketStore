@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+    Hospitality
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Hospitality</h1>
+        {% if perms.hospitality.add_hospitalityreal %}
+            <a class="btn btn-sm btn-primary" href="{% url 'create_hospitality_real' %}">Create Hospitality</a>
+        {% endif %}
+        {% for hospitality in all_hospitality %}
+            <div class="card">
+                <div class="card-header">
+                    Only for VIP
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ hospitality.name_real }}</h5>
+                    <p class="card-text">Description: {{ hospitality.description_real }}</p>
+                    {% if perms.user.vip_only %}
+                        <a class="btn btn-sm btn-success" href="{% url 'create_booking' %}">Reserve hospitality</a>
+                    {% else %}
+                        <a class="btn btn-sm btn-danger" href="{% url 'become_vip' %}">Become VIP to reserve</a>
+                    {% endif %}
+                    {% if perms.hospitality.change_hospitalityreal %}
+                        <a class="btn btn-sm btn-primary"
+                           href="{% url 'update_hospitality_real' hospitality.id %}">Update</a>
+                    {% endif %}
+                    {% if perms.hospitality.delete_hospitalityreal %}
+                        <a class="btn btn-sm btn-danger" href="{% url 'delete_hospitality_real' hospitality.id %}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #dadde6;
+            font-family: Arial, serif;
+        }
+
+        .container {
+            width: 90%;
+            margin: 100px auto
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+        .card {
+            margin-bottom: 40px;
+        }
+    </style>
+{% endblock %}

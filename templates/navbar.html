@@ -32,8 +32,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{% url 'hospitality' %}">Man City</a></li>
                         <li><a class="dropdown-item" href="{% url 'hospitality_real' %}">Real Madrid</a></li>
-                        <li><a class="dropdown-item" href="{% url 'hospitality_real' %}">Man United</a></li>
-                        <li><a class="dropdown-item" href="{% url 'hospitality_real' %}">Barcelona</a></li>
+                        <li><a class="dropdown-item" href="{% url 'hospitality_united' %}">Man United</a></li>
+                        <li><a class="dropdown-item" href="{% url 'hospitality_barca' %}">Barcelona</a></li>
                         <li><a class="dropdown-item" href="#">Coming soon...</a></li>
                     </ul>
                 </li>
@@ -79,13 +79,25 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/hospitality/' %}
-                <form class="d-flex" action="{% url 'search_hospitality' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_hospitality_payed' %}" style="margin-right: 300px">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            {% elif request.path == '/hospitality-barca/' %}
+                <form class="d-flex" action="{% url 'search_hospitality_payed' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/hospitality-real/' %}
-                <form class="d-flex" action="{% url 'search_hospitality_real' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_hospitality_vip' %}" style="margin-right: 300px">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            {% elif request.path == '/hospitality-united/' %}
+                <form class="d-flex" action="{% url 'search_hospitality_vip' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -123,7 +135,7 @@
             {% if user.is_authenticated %}
                 {% if perms.user.vip_only %}
                     <div>
-                        <a class="btn btn-sm btn-warning" href="{% url 'become_vip' %}"  style="margin-right: 5px">Already
+                        <a class="btn btn-sm btn-warning" href="{% url 'become_vip' %}" style="margin-right: 5px">Already
                             VIP</a>
                     </div>
                 {% else %}

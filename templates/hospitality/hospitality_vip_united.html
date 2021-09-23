@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Hospitality</h1>
         {% if perms.hospitality.add_hospitalityreal %}
-            <a class="btn btn-sm btn-primary" href="{% url 'create_hospitality_real' %}">Create Hospitality</a>
+            <a class="btn btn-sm btn-primary" href="{% url 'create_hospitality_united' %}">Create Hospitality</a>
         {% endif %}
         {% for hospitality in all_hospitality %}
             <div class="card">
@@ -14,9 +14,8 @@
                     Only for VIP
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ hospitality.name }}</h5>
-                    <p class="card-text">Description: {{ hospitality.description }}</p>
-                    {#                    <p class="card-text">Date test: {{ available_date.date }}</p>#}
+                    <h5 class="card-title">{{ hospitality.name_united }}</h5>
+                    <p class="card-text">Description: {{ hospitality.description_united }}</p>
                     {% if perms.user.vip_only %}
                         <a class="btn btn-sm btn-success" href="{% url 'create_booking' %}">Reserve hospitality</a>
                     {% else %}
@@ -24,10 +23,10 @@
                     {% endif %}
                     {% if perms.hospitality.change_hospitalityreal %}
                         <a class="btn btn-sm btn-primary"
-                           href="{% url 'update_hospitality_real' hospitality.id %}">Update</a>
+                           href="{% url 'update_hospitality_united' hospitality.id %}">Update</a>
                     {% endif %}
                     {% if perms.hospitality.delete_hospitalityreal %}
-                        <a class="btn btn-sm btn-danger" href="{% url 'delete_hospitality_real' hospitality.id %}">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'delete_hospitality_united' hospitality.id %}">Delete</a>
                     {% endif %}
                 </div>
             </div>

@@ -6,7 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from fixture.models import Fixture
 from home.forms import VIPForm
 from home.models import VIP
-from hospitality.models import Hospitality, HospitalityReal
+from hospitality.models import HospitalityPayed, HospitalityVIP
 from merch.models import Merch
 
 
@@ -97,16 +97,16 @@ def search_merch_barcelona(request):
     return render(request, 'merch/merch_real.html', {'all_merch': merch_found})
 
 
-def search_hospitality_view(request):
+def search_hospitality_payed(request):
     search = request.GET.get('search')
-    hospitality_found = Hospitality.objects.filter(name__contains=search)
-    return render(request, 'hospitality/hospitality.html', {'all_hospitality': hospitality_found})
+    hospitality_found = HospitalityPayed.objects.filter(name__contains=search)
+    return render(request, 'hospitality/hospitality_payed.html', {'all_hospitality': hospitality_found})
 
 
-def search_hospitality_real_view(request):
+def search_hospitality_vip(request):
     search = request.GET.get('search')
-    hospitality_found = HospitalityReal.objects.filter(name__contains=search)
-    return render(request, 'hospitality/hospitality_real.html', {'all_hospitality': hospitality_found})
+    hospitality_found = HospitalityVIP.objects.filter(name__contains=search)
+    return render(request, 'hospitality/hospitality_vip.html', {'all_hospitality': hospitality_found})
 
 
 def search_fixture_city(request):

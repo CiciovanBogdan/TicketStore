@@ -7,6 +7,6 @@
         {% csrf_token %}
         <p>Do you really want to delete {{ all_hospitality.name }}?</p>
         <button class="btn btn-sm btn-danger" type="submit">Yes</button>
-        <a class="btn btn-sm btn-secondary" href="{% url 'hospitality' %}">No</a>
+        <a class="btn btn-sm btn-secondary" href="{{ request.META.HTTP_REFERER|escape }}">No</a>
     </form>
 {% endblock %}

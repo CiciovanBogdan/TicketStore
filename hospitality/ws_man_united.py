@@ -2,13 +2,13 @@ import bs4
 import requests
 import xlsxwriter
 
-url = 'https://www.manutd.com/en/Executive-Club/hospitality-options'
+url = 'https://www.manutd.com/en/Matchday-VIP'
 result = requests.get(url)
 print(result)
 
 soup = bs4.BeautifulSoup(result.text, 'lxml')
 
-cases = soup.find_all('div', class_='slick-slider carousal-list center slick-initialized')
+cases = soup.find_all('div', class_='mu-content')
 
 context = {'data': []}
 
@@ -30,9 +30,7 @@ col = 0
 
 for date in context['data']:
     worksheet.write(row, col, date['product_name'])
-    worksheet.write(row, col + 1, 0)
-    worksheet.write(row, col + 2,
-                    'for more information visit https://www.manutd.com/en/Executive-Club/hospitality-options')
+    worksheet.write(row, col + 1, 'Product available only for VIP members')
     row += 1
 
 workbook.close()

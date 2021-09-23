@@ -11,11 +11,11 @@
         {% for hospitality in all_hospitality %}
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{ hospitality.name }}</h5>
+                    <h5 class="card-title">{{ hospitality.name_city }}</h5>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Price: {{ hospitality.price }}</p>
-                    <p class="card-text">Description: {{ hospitality.description }}</p>
+                    <p class="card-text">Price: {{ hospitality.price_city }}</p>
+                    <p class="card-text">Description: {{ hospitality.description_city }}</p>
                     <a href="#" class="btn btn-secondary">More details</a>
                     <button type="button" data-bs-toggle="modal" class="btn btn-primary"
                             data-bs-target="#buyModal" id="modalTrigger">
