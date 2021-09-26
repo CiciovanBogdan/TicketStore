@@ -11,7 +11,7 @@
     {% for merch in all_merch %}
         {% if merch.for_city %}
             {% if not merch.for_vip %}
-                <div class="card" style="width: 18rem;margin-right: 30px;">
+                <div class="card" style="width: 18rem;margin-right: 20px;">
                     <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
                     <div class="card-body">
                         <h5 class="card-title">{{ merch.name }}</h5>
@@ -56,7 +56,7 @@
     {% for merch in all_merch %}
         {% if merch.for_city %}
             {% if  merch.for_vip %}
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem;margin-right: 20px;">
                     <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
                     <div class="card-body">
                         <h5 class="card-title">{{ merch.name }}</h5>

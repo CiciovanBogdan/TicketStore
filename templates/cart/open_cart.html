@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-
+    My Cart
 {% endblock %}
 {% block content %}
     <table>
@@ -9,32 +9,35 @@
             <th>Quantity</th>
             <th>Product</th>
             <th>Unit Price</th>
-            <th>Unit Price</th>
-            <th>Total</th>
-            {#            <th>Actions</th>#}
+            <th>Total Price</th>
         </tr>
         </thead>
         <tbody>
-        {% for cart_item in cart_items %}
+        {% for cart_item_with_total in cart_items_with_totals %}
             <tr>
-                <td>{{ cart_item.quantity }}</td>
+                <td>{{ cart_item_with_total.cart_item.quantity }}</td>
                 <td>
-                    <img src="{{ cart_item.product.header_image.url }}" alt="cart_item_photo"
+                    <img src="{{ cart_item_with_total.cart_item.product.header_image.url }}" alt="cart_item_photo"
                          style="max-width: 60px;max-height: 60px">
-                    {{ cart_item.product.name }}
+                    {{ cart_item_with_total.cart_item.product.name }}
                 </td>
-                <td>{{ cart_item.product.price }}</td>
-                <td>{{ cart_item.product.price }}</td>
-                {#                <td>#}
-                {#                    <button class="btn btn-sm btn-danger">Remove</button>#}
-                {#                </td>#}
+                <td>{{ cart_item_with_total.cart_item.product.price }}</td>
+                <td>
+                    {{ cart_item_with_total.t_price }}
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     <div>
-        {% for cart_item in cart_items %}
-            <span>Cart value: {{ cart_item.product.price }}</span>
-        {% endfor %}
+        <span>Cart total: {{ final_total }}</span>
+        <a class="btn btn-sm btn-warning" href="{% url 'merch' %}">Go back to shopping</a>
+        <a class="btn btn-sm btn-primary" href="{% url 'checkout' %}">Go checkout</a>
     </div>
+    <style>
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
 {% endblock %}

@@ -71,30 +71,26 @@ def thx_for_contact(request):
 
 def search_merch_city(request):
     search = request.GET.get('search')
-    merch_found = Merch.objects.filter(name_city__contains=search)
-    # another_product = Merch.objects.filter()
-    # merch_found = list(merch_found)
-    # another_product = list(another_product)
-    # merch_found.extend(another_product)
+    merch_found = Merch.objects.filter(name__contains=search)
     return render(request, 'merch/merch.html', {'all_merch': merch_found})
 
 
 def search_merch_real(request):
     search = request.GET.get('search')
-    merch_found = Merch.objects.filter(name_real__contains=search)
+    merch_found = Merch.objects.filter(name__contains=search)
     return render(request, 'merch/merch_real.html', {'all_merch': merch_found})
 
 
 def search_merch_united(request):
     search = request.GET.get('search')
-    merch_found = Merch.objects.filter(name_united__contains=search)
-    return render(request, 'merch/merch_real.html', {'all_merch': merch_found})
+    merch_found = Merch.objects.filter(name__contains=search)
+    return render(request, 'merch/merch_man_united.html', {'all_merch': merch_found})
 
 
 def search_merch_barcelona(request):
     search = request.GET.get('search')
-    merch_found = Merch.objects.filter(name_barcelona__contains=search)
-    return render(request, 'merch/merch_real.html', {'all_merch': merch_found})
+    merch_found = Merch.objects.filter(name__contains=search)
+    return render(request, 'merch/merch_barcelona.html', {'all_merch': merch_found})
 
 
 def search_hospitality_payed(request):

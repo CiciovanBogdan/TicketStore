@@ -6,7 +6,7 @@
     <form method="post" action="{% url 'success_booking' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-primary" type="submit" onclick="buttonClick()" id="available_btn">
+        <button class="btn btn-primary" type="submit">
             Register booking
         </button>
     </form>

@@ -12,6 +12,6 @@ urlpatterns = [
     path('delete-merch/<int:pk>/', views.MerchDeleteView.as_view(), name='delete_merch'),
     path('buy-product/<int:pk>/', views.MerchDetailView.as_view(), name='buy_product'),
     path('final-details/', views.final_details, name='final_details'),
-    path('checkout-merch/', views.checkout_merch, name='checkout_merch'),  # loc pt checkout merch
+    path('checkout-merch/', views.checkout_merch, name='checkout_merch'),
     path('final-purchse-details/<int:pk>/', views.MerchFinalDetailView.as_view(), name='final_purchase_details'),
 ]
