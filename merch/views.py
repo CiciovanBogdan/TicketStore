@@ -48,20 +48,9 @@ class MerchDetailView(DetailView):
     context_object_name = 'all_merch'
 
 
-class MerchFinalDetailView(DetailView):
-    template_name = 'merch/final_details.html'
-    model = Merch
-    context_object_name = 'all_merch'
-
-
-# loc pt final details
-def final_details(request):
-    return render(request, 'merch/final_details.html')
-
-
 # loc pt checkout merch
 def checkout_merch(request):
-    return render(request, 'merch/checkout.html')
+    return render(request, 'checkout.html')
 
 
 # de aici la real

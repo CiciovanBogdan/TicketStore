@@ -93,16 +93,28 @@ def search_merch_barcelona(request):
     return render(request, 'merch/merch_barcelona.html', {'all_merch': merch_found})
 
 
-def search_hospitality_payed(request):
+def search_hospitality_payed_city(request):
     search = request.GET.get('search')
-    hospitality_found = HospitalityPayed.objects.filter(name__contains=search)
+    hospitality_found = HospitalityPayed.objects.filter(name_city__contains=search)
     return render(request, 'hospitality/hospitality_payed.html', {'all_hospitality': hospitality_found})
 
 
-def search_hospitality_vip(request):
+def search_hospitality_payed_barcelona(request):
     search = request.GET.get('search')
-    hospitality_found = HospitalityVIP.objects.filter(name__contains=search)
+    hospitality_found = HospitalityPayed.objects.filter(name_barcelona__contains=search)
+    return render(request, 'hospitality/hospitality_payed_barca.html', {'all_hospitality': hospitality_found})
+
+
+def search_hospitality_vip_real(request):
+    search = request.GET.get('search')
+    hospitality_found = HospitalityVIP.objects.filter(name_real__contains=search)
     return render(request, 'hospitality/hospitality_vip.html', {'all_hospitality': hospitality_found})
+
+
+def search_hospitality_vip_united(request):
+    search = request.GET.get('search')
+    hospitality_found = HospitalityVIP.objects.filter(name_united__contains=search)
+    return render(request, 'hospitality/hospitality_vip_united.html', {'all_hospitality': hospitality_found})
 
 
 def search_fixture_city(request):

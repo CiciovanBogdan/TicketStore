@@ -28,7 +28,7 @@ class FixtureBarcelonaListView(ListView):
 
 
 def checkout(request):
-    return render(request, 'fixture/checkout.html')
+    return render(request, 'checkout.html')
 
 
 def success_purchase(request):

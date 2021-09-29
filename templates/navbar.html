@@ -79,25 +79,26 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/hospitality/' %}
-                <form class="d-flex" action="{% url 'search_hospitality_payed' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_hospitality_payed_city' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/hospitality-barca/' %}
-                <form class="d-flex" action="{% url 'search_hospitality_payed' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_hospitality_payed_barcelona' %}"
+                      style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/hospitality-real/' %}
-                <form class="d-flex" action="{% url 'search_hospitality_vip' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_hospitality_vip_real' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/hospitality-united/' %}
-                <form class="d-flex" action="{% url 'search_hospitality_vip' %}" style="margin-right: 300px">
+                <form class="d-flex" action="{% url 'search_hospitality_vip_united' %}" style="margin-right: 300px">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -127,9 +128,10 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             {% elif request.path == '/' or request.path == '/login/' or request.path == '/password_reset/' %}
-            {% elif request.path == '/create-user/' or request.path == '/contact-us/' %}
+            {% elif request.path == '/create-user/' or request.path == '/contact-us/' or request.path == '/success-purchase/' %}
+            {% elif request.path == '/product-cart/' or request.path == '/success-vip/' %}
             {% else %}
-                <span>Back before search: </span>
+                <span>Back to last page: </span>
                 <button class="btn btn-danger" id="back_btn" style="margin-right: 300px">Back</button>
             {% endif %}
             {% if user.is_authenticated %}

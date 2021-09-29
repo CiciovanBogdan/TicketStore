@@ -3,13 +3,14 @@
     My Cart
 {% endblock %}
 {% block content %}
-    <table>
+    <table class="center">
         <thead>
         <tr>
             <th>Quantity</th>
             <th>Product</th>
             <th>Unit Price</th>
             <th>Total Price</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -25,12 +26,13 @@
                 <td>
                     {{ cart_item_with_total.t_price }}
                 </td>
+            <td><a class="btn btn-sm btn-danger" href="{% url 'remove_from_cart' %}">Remove</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <div>
-        <span>Cart total: {{ final_total }}</span>
+    <div class="center ceva">
+        <span>Cart total: {{ final_total }} &#128</span><br>
         <a class="btn btn-sm btn-warning" href="{% url 'merch' %}">Go back to shopping</a>
         <a class="btn btn-sm btn-primary" href="{% url 'checkout' %}">Go checkout</a>
     </div>
@@ -38,6 +40,18 @@
         th, td {
             padding: 15px;
             text-align: left;
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .ceva {
+            font-size: xx-large;
+            position: absolute;
+            right: 0;
         }
     </style>
 {% endblock %}

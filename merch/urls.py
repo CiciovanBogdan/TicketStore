@@ -11,7 +11,5 @@ urlpatterns = [
     path('update-merch/<int:pk>/', views.MerchUpdateView.as_view(), name='update_merch'),
     path('delete-merch/<int:pk>/', views.MerchDeleteView.as_view(), name='delete_merch'),
     path('buy-product/<int:pk>/', views.MerchDetailView.as_view(), name='buy_product'),
-    path('final-details/', views.final_details, name='final_details'),
     path('checkout-merch/', views.checkout_merch, name='checkout_merch'),
-    path('final-purchse-details/<int:pk>/', views.MerchFinalDetailView.as_view(), name='final_purchase_details'),
 ]
