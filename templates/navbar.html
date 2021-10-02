@@ -152,7 +152,7 @@
                     <a class="btn btn-sm btn-secondary" href="{% url 'logout' %}">Logout {{ request.user.username }}</a>
                     <a class="btn btn-sm btn-secondary" href="{% url 'product_cart' %}">
                         My Cart
-                        <img src="{% static 'cart.jpg' %}" style="max-width: 30px;max-height: 30px" alt="...">
+                        <img src="{% static 'cart.jpg' %}" style="max-width: 21px;max-height: 21px" alt="...">
                     </a>
                 {% else %}
                     <a class="btn btn-sm btn-primary" href="{% url 'create_user' %}">Sign Up</a>
