@@ -3,6 +3,8 @@
     My Cart
 {% endblock %}
 {% block content %}
+    {# payment stripe #}
+    {# trebuie un context processor #}
     <table class="center">
         <thead>
         <tr>
@@ -10,13 +12,25 @@
             <th>Product</th>
             <th>Unit Price</th>
             <th>Total Price</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for cart_item_with_total in cart_items_with_totals %}
             <tr>
-                <td>{{ cart_item_with_total.cart_item.quantity }}</td>
+                <td>
+                    {#pt update#}
+                    <form method="post" action="{% url 'update_cart_item' cart_item_with_total.cart_item.id %}">
+                        {% csrf_token %}
+                        <label>
+                            <input type="number" id="quantity" name="quantity"
+                                   value="{{ cart_item_with_total.cart_item.quantity }}">
+                            <input type="hidden" name="product_id"
+                                   value="{{ cart_item_with_total.cart_item.product.id }}"><br>
+                            <button class="btn btn-sm btn-info" type="submit">Update quantity</button>
+                        </label>
+                    </form>
+                </td>
                 <td>
                     <img src="{{ cart_item_with_total.cart_item.product.header_image.url }}" alt="cart_item_photo"
                          style="max-width: 60px;max-height: 60px">
@@ -26,12 +40,20 @@
                 <td>
                     {{ cart_item_with_total.t_price }}
                 </td>
-            <td><a class="btn btn-sm btn-danger" href="{% url 'remove_from_cart' %}">Remove</a></td>
+                <td>
+                    {#pt delete#}
+                    <form method="post" action="{% url 'update_cart_item' cart_item_with_total.cart_item.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" id="quantity" name="quantity" value="0">
+                        <input type="hidden" name="product_id" value="{{ cart_item_with_total.cart_item.product.id }}">
+                        <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <div class="center ceva">
+    <div class="center font">
         <span>Cart total: {{ final_total }} &#128</span><br>
         <a class="btn btn-sm btn-warning" href="{% url 'merch' %}">Go back to shopping</a>
         <a class="btn btn-sm btn-primary" href="{% url 'checkout' %}">Go checkout</a>
@@ -44,14 +66,14 @@
 
         .center {
             margin: auto;
-            width: 50%;
+            width: 70%;
             padding: 10px;
         }
 
-        .ceva {
+        .font {
             font-size: xx-large;
-            position: absolute;
-            right: 0;
+            position: relative;
+            left: 600px;
         }
     </style>
 {% endblock %}

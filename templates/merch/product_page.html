@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Buy Product</h1>
     <div class="card text-center">
-        <div style="width: 18rem;" class="text-center">
+        <div style="width: 18rem;" class="center">
             <img src="{{ all_merch.header_image.url }}" class="card-img-top" alt="...">
         </div>
         <h2>{{ all_merch.name }}</h2>
@@ -20,12 +20,12 @@
                 <option value="XL">XL</option>
                 <option value="XXL">XXL</option>
             </select>
+            <button type="button" data-bs-toggle="modal" class="btn btn-primary form-control"
+                    data-bs-target="#buyModal" id="modalTrigger">
+                Buy now
+            </button>
+            <a class="btn btn-sm btn-secondary form-control" href="{{ request.META.HTTP_REFERER|escape }}">Cancel</a>
         </form>
-        <button type="button" data-bs-toggle="modal" class="btn btn-primary"
-                data-bs-target="#buyModal" id="modalTrigger">
-            Buy now
-        </button>
-        <a class="btn btn-sm btn-secondary" href="{{ request.META.HTTP_REFERER|escape }}">Cancel</a>
     </div>
     {# modal #}
     <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,6 +72,12 @@
         .card {
             background-color: #dadde6;
             margin-bottom: 40px;
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
         }
     </style>
 {% endblock %}
