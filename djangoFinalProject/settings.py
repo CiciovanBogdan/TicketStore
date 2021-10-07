@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-cs^@)w^-)s5%8=)zfqw&#&&cfj&2u_7w#y^8xir2m!lh)7-(ip
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cbitickets.pythonanywhere.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['cbitickets.pythonanywhere.com', '127.0.0.1']
 
 # Application definition
 
