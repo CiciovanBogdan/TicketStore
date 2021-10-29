@@ -6,6 +6,7 @@ url = "https://tickets.manutd.com/hospitality"
 
 result = requests.get(url)
 print(result)
+
 soup = bs4.BeautifulSoup(result.text, 'lxml')
 
 cases = soup.find_all('div', class_='dataItem item_background item_data_background')

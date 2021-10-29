@@ -5,6 +5,7 @@ import xlsxwriter
 url = "https://tickets.mancity.com/en-GB/categories/Men's%20Tickets"
 
 result = requests.get(url)
+print(result)
 
 soup = bs4.BeautifulSoup(result.text, 'lxml')
 
