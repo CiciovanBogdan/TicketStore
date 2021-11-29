@@ -16,7 +16,7 @@ database = sqlite3.connect('../db.sqlite3')
 cursor = database.cursor()
 cursor.execute(f"DELETE FROM fixture_fixture;")
 
-for row in range(0, sheet.nrows):
+for row in range(0, sheet_barcelona.nrows):
     title_man_city = sheet_city.cell(row, 0).value
     match_info_man_city = sheet_city.cell(row, 1).value
     title_real_madrid = sheet.cell(row, 0).value
