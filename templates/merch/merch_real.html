@@ -15,19 +15,8 @@
                     <img src="{{ merch.header_image.url }}" class="card-img-top" alt="..." style="max-height: 280px">
                     <div class="card-body">
                         <h5 class="card-title">{{ merch.name }}</h5>
-                        {% if merch.discount_price > 1 %}
-                            <div>
-                                <small class="card-text" style="text-decoration:line-through">Old
-                                    price: {{ merch.price }}
-                                    &#163 </small>
-                                <p class="card-text">Price: {{ merch.discount_price }} &#163</p>
-                            </div>
-                        {% else %}
-                            <div>
-                                <p class="card-text" style="margin-bottom:18px;margin-top: 14px">
-                                    Price: {{ merch.price }} &#128</p>
-                            </div>
-                        {% endif %}
+                        <p class="card-text" style="margin-bottom:18px;margin-top: 14px">
+                            Price: {{ merch.price }} &#128</p>
                         <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
                         <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy product</a>
                         {% if user.is_authenticated %}
@@ -62,19 +51,8 @@
                              style="max-height: 280px">
                         <div class="card-body">
                             <h5 class="card-title">{{ merch.name }}</h5>
-                            {% if merch.discount_price > 1 %}
-                                <div>
-                                    <small class="card-text" style="text-decoration:line-through">Old
-                                        price: {{ merch.price }}
-                                        &#163 </small>
-                                    <p class="card-text">Price: {{ merch.discount_price }} &#163</p>
-                                </div>
-                            {% else %}
-                                <div>
-                                    <p class="card-text" style="margin-bottom:18px;margin-top: 14px">
-                                        Price: {{ merch.price }} &#128</p>
-                                </div>
-                            {% endif %}
+                            <p class="card-text" style="margin-bottom:18px;margin-top: 14px">
+                                Price: {{ merch.price }} &#128</p>
                             <p class="card-text">Available sizes: S/M/L/XL/XXL</p>
                             {% if perms.user.vip_only %}
                                 <a class="btn btn-sm btn-primary" href="{% url 'buy_product' merch.id %}">Buy
