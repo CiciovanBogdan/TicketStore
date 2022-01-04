@@ -1,5 +1,3 @@
-# from functools import reduce
-
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -48,12 +46,10 @@ class MerchDetailView(DetailView):
     context_object_name = 'all_merch'
 
 
-# loc pt checkout merch
 def checkout_merch(request):
     return render(request, 'checkout.html')
 
 
-# de aici la real
 class MerchRealListView(ListView):
     template_name = 'merch/merch_real.html'
     model = Merch
@@ -65,14 +61,12 @@ class MerchRealListView(ListView):
         return context
 
 
-# de aici man united
 class MerchManUnitedListView(ListView):
     template_name = 'merch/merch_man_united.html'
     model = Merch
     context_object_name = 'all_merch'
 
 
-# de aici barcelona
 class MerchBarcelonaListView(ListView):
     template_name = 'merch/merch_barcelona.html'
     model = Merch

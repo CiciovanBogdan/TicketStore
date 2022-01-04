@@ -33,7 +33,3 @@ def checkout(request):
 
 def success_purchase(request):
     return render(request, 'fixture/success.html')
-
-
-def reduce_price():
-    pass
