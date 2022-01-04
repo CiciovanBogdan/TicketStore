@@ -54,7 +54,7 @@
     <h1>Contact Us</h1>
 
     <div class="container">
-        <form action="{% url 'thank_you_for_contact' %}">
+        <form method="post" action="{% url 'thank_you_for_contact' %}">
             <label for="fname">First Name</label>
             <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
 
@@ -68,7 +68,8 @@
             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"
                       required></textarea>
 
-            <input type="submit">
+            <button class="btn btn-sm btn-primary" type="submit">Send message</button>
+            <a class="btn btn-sm btn-secondary" href="{{ request.META.HTTP_REFERER|escape }}">Cancel</a>
         </form>
     </div>
 {% endblock %}

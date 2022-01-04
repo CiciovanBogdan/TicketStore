@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}
-    Booking for hospitality
+    Booking
 {% endblock %}
 {% block content %}
-    <form method="post" action="{% url 'success_booking' %}">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-primary" type="submit">
-            Register booking
-        </button>
+        <button class="btn btn-sm btn-primary" type="submit">Register booking</button>
+        <a class="btn btn-sm btn-secondary" href="{{ request.META.HTTP_REFERER|escape }}">Cancel</a>
     </form>
 {% endblock %}

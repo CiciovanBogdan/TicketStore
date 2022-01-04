@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from h_bookings.forms import BookingForm
@@ -10,6 +11,7 @@ class BookingCreateView(CreateView):
     model = Booking
     form_class = BookingForm
     context_object_name = 'all_bookings'
+    success_url = reverse_lazy('success_booking')
 
 
 def success_booking(request):
