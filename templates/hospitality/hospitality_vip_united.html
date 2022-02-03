@@ -19,7 +19,11 @@
                     {% if perms.user.vip_only %}
                         <a class="btn btn-sm btn-success" href="{% url 'create_booking' %}">Reserve hospitality</a>
                     {% else %}
-                        <a class="btn btn-sm btn-danger" href="{% url 'become_vip' %}">Become VIP to reserve</a>
+                        {% if user.is_authenticated %}
+                            <a class="btn btn-sm btn-danger" href="{% url 'become_vip' %}">Become VIP to reserve</a>
+                        {% else %}
+                            <a class="btn btn-sm btn-info" href="{% url 'login' %}">Login to reserve</a>
+                        {% endif %}
                     {% endif %}
                     {% if perms.hospitality.change_hospitalityreal %}
                         <a class="btn btn-sm btn-primary"
