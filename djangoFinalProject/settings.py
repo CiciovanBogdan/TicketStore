@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'djangoFinalProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
     }
 }
 
@@ -132,6 +132,39 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/ticket-man-city/'
+LOGOUT_REDIRECT_URL = '/login/'
+
+
+
+
+
+#nu mai da scroll daca esti pe stream abab
+
+
+
+
+
+
+
+
+#baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa uitate sus
+
+
+
+
+
+
+
+
+
+
+
+
+
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -141,7 +174,3 @@ EMAIL_HOST_PASSWORD = 'Ronaldo564007'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/ticket-man-city/'
-LOGOUT_REDIRECT_URL = '/login/'
